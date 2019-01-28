@@ -1,0 +1,10 @@
+@model IEnumerable<MVCBlog.Core.Entities.Tag>
+
+<div>
+    <ul class="list-inline">
+        @foreach (var tag in Model)
+        { 
+            <li><a href="@Url.RouteUrl(Routes.TAG, new { tag = tag.Name })">@tag.Name</a></li>
+        }
+    </ul>
+</div>

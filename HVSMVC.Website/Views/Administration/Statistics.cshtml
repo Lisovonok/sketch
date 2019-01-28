@@ -1,0 +1,25 @@
+@model MVCBlog.Website.Models.OutputModels.Administration.Downloads
+
+@section ScriptContent {
+    <script type="text/javascript" src="@Links.Scripts.raphael_min_js"></script>
+    <script type="text/javascript" src="@Links.Scripts.popup_js"></script>
+    <script type="text/javascript" src="@Links.Scripts.feedstatisticschart_js"></script>
+}
+
+<h2>@Common.Blog</h2>
+<table class="table table-bordered table-hover">
+    <tr class="active">
+        <th>@Common.Post</th>
+        <th>@Common.Visits</th>
+    </tr>
+
+    @foreach (var item in Model.BlogEntries)
+    {
+        <tr>
+            <td>@Html.ActionLink(item.Header, item.Url, MVC.Blog.Name)</td>
+            <td>@item.Visits</td>
+        </tr>
+    }
+</table>
+
+<div id="holder" style="height: 300px; width: 100%;"></div>

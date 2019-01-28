@@ -1,0 +1,19 @@
+@model MVCBlog.Website.Models.OutputModels.Blog.BlogEntryDetail
+
+@{
+    Layout = "~/Views/Shared/Sidebar.Layout.cshtml";
+}
+
+<article>
+@{Html.RenderPartial(MVC.Blog.Views._BlogEntryHeaderControl, Model.BlogEntry);}
+@Html.Raw(Model.BlogEntry.ShortContent)
+    @if (Model.BlogEntry.Content != null)
+    {
+        @Html.Raw(Model.BlogEntry.Content)
+    }
+</article>
+
+@{Html.RenderPartial(MVC.Blog.Views._MetaInformationControl, Model);}
+
+@{Html.RenderPartial(MVC.Blog.Views._CommentsControl, Model);}
+

@@ -1,0 +1,15 @@
+@model MVCBlog.Core.Entities.BlogEntryComment
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Comment)
+    @Html.TextAreaFor(m => m.Comment, new { rows = 7, @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.AntiForgeryToken()
+    <input id="submitCommentForm" type="submit" value="@Common.Submit" class="btn btn-primary" />
+    @Html.ValidationMessage("submit")
+</div>

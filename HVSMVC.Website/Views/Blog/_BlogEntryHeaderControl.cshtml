@@ -1,0 +1,18 @@
+@model MVCBlog.Core.Entities.BlogEntry
+
+<p>
+    <i class="glyphicon glyphicon-calendar"></i> <time datetime="@Model.PublishDate.ToString("yyyy-MM-dd")">@Model.PublishDate.ToShortDateString()</time>
+
+    @if (Model.Author != null)
+    {
+        <text>&nbsp; &nbsp;</text><i class="glyphicon glyphicon-user"></i> <text>@Model.Author</text>
+    }
+
+    &nbsp; &nbsp;<i class="glyphicon glyphicon-comment"></i> <a href="@Url.Action(Model.Url)#comments" title="@Common.ToComments">@Model.BlogEntryComments.Count</a>
+
+    @if (Request.IsAuthenticated)
+    {
+        <text>&nbsp; &nbsp;</text><i class="glyphicon glyphicon-edit"></i> <a href="@Url.Action(MVC.Administration.EditBlogEntry(Model.Id))" title="@Common.Edit">@Common.Edit</a>
+        <text>&nbsp; &nbsp;</text><i class="glyphicon glyphicon-remove-circle"></i> <a href="@Url.Action(MVC.Blog.Delete(Model.Id))" class="adminlink deleteicon" title="@Common.Delete" onclick="if (!confirm('@Common.DeleteConfirmation')) { return false;}">@Common.Delete</a>
+    }
+</p>
